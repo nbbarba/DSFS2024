@@ -1,2 +1,2 @@
 # DSFS2024
-Learning Logs from DSF
+This is the repository for N. Brandon Barba, a Data Science Fellow for Spring 2024 at the University of Arizona. 
