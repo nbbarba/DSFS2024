@@ -1,11 +1,11 @@
 site_name: FOSS 24 Spring GitHub tutorial
 site_description: Site for tutorial for FOSS 24 attendees
 site_author: N. Brandon Barba
-site_url: https://nbbarba.github.io
+site_url: https://nbbarba.github.io/website
 
 # Repository
 repo_name: DSFS2024
-repo_url: https://github.com/nbbarba/DSFS2024
+repo_url: https://github.com/nbbarba/website
 edit_uri: edit/main/docs/
 # Copyright
 copyright: 'Copyright &copy; 2023 - 2024'
