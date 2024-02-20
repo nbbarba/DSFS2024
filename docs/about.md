@@ -2,7 +2,7 @@
 
 My name is N. Brandon Barba and I'm a PhD student in Clinical Translational Science at the University of Arizona (Phoenix). My research mentor is Dr. Garcia-Filion. 
 
-My current research interests are in clinical research including:
+My current interests are in clinical research including:
 - Informatics
 - Epidemiology
 - Data Science & Machine Learning
