@@ -52,6 +52,7 @@ icon:
 nav:
 - Home: index.md
 - About: about.md
+- Data Management Plan: dmp.md
 
 # Extra Plugins
 plugins:
