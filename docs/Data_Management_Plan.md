@@ -31,4 +31,4 @@ This work is part of the expected research responsibilities of the clinicians an
 
 ### Proposed Data Workflow
 Below is a proposed workflow for the research data. 
-![Flowchart](../Images/L&D_Workflow.jpg)
+![Flowchart](../Images/L&D_Workflow.jpg){ loading=lazy }
