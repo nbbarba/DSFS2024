@@ -1,0 +1,167 @@
+---
+title: "L & D Database practice"
+author: "N. Brandon Barba"
+date: "2024-03-13"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This Code is to change directory and upload the CSV File
+```{r read, echo=TRUE}
+#setwd("/Users/brandon/Library/Mobile
+#Documents/com~apple~CloudDocs/Samus/1|Projects/OB_GYN Research/L&D/Programs")
+data <- read.csv('../Data/Practice_Import.csv', header = T)
+
+```
+
+This chunk is to clean the csv columns
+```{r clean, echo=TRUE}
+#Clean Weeks
+data$ega <- substr(data$ega,1,2)
+
+#Split Delivery Type
+data$delivery_type_1 <- NA
+data$delivery_type_2 <- NA
+
+split_values <- strsplit(as.character(data$delivery_type),";")
+data$delivery_type_1 <- sapply(split_values, function(x) x[1])
+data$delivery_type_2 <- sapply(split_values, function(x) x[2])
+
+#Fix Estimated Blood loess
+data$ebl<- gsub("mL", "", data$ebl)
+
+#Split Augmentation Method
+data$aug_method_1 <- NA
+data$aug_method_2 <- NA
+
+split_values <- strsplit(as.character(data$aug_method),";")
+data$aug_method_1 <- sapply(split_values, function(x) x[1])
+data$aug_method_2 <- sapply(split_values, function(x) x[2])
+
+#Split C-Section Indications
+data$cs_ind_1 <- NA
+data$cs_ind_2 <- NA
+data$cs_ind_3 <- NA
+data$cs_ind_4 <- NA
+data$cs_ind_5 <- NA
+
+split_values <- strsplit(as.character(data$cs_ind),";")
+data$cs_ind_1 <- sapply(split_values, function(x) x[1])
+data$cs_ind_2 <- sapply(split_values, function(x) x[2])
+data$cs_ind_3 <- sapply(split_values, function(x) x[3])
+data$cs_ind_4 <- sapply(split_values, function(x) x[4])
+data$cs_ind_5 <- sapply(split_values, function(x) x[5])
+
+#Split Fetal Monitor
+data$fhr_mon_1 <- NA
+data$fhr_mon_2 <- NA
+
+split_values <- strsplit(as.character(data$fhr_mon),";")
+data$fhr_mon_1 <- sapply(split_values, function(x) x[1])
+data$fhr_mon_2 <- sapply(split_values, function(x) x[2])
+
+#Split Maternal Complications
+data$mat_comp_1 <- NA
+data$mat_comp_2 <- NA
+data$mat_comp_3 <- NA
+data$mat_comp_4 <- NA
+data$mat_comp_5 <- NA
+
+split_values <- strsplit(as.character(data$mat_comp),";")
+data$mat_comp_1 <- sapply(split_values, function(x) x[1])
+data$mat_comp_2 <- sapply(split_values, function(x) x[2])
+data$mat_comp_3 <- sapply(split_values, function(x) x[3])
+data$mat_comp_4 <- sapply(split_values, function(x) x[4])
+data$mat_comp_5 <- sapply(split_values, function(x) x[5])
+
+#Split Neontal Complications
+data$neonatal_comp_1 <- NA
+data$neonatal_comp_2 <- NA
+data$neonatal_comp_3 <- NA
+data$neonatal_comp_4 <- NA
+data$neonatal_comp_5 <- NA
+
+split_values <- strsplit(as.character(data$neonatal_comp),";")
+data$neonatal_comp_1 <- sapply(split_values, function(x) x[1])
+data$neonatal_comp_2 <- sapply(split_values, function(x) x[2])
+data$neonatal_comp_3 <- sapply(split_values, function(x) x[3])
+data$neonatal_comp_4 <- sapply(split_values, function(x) x[4])
+data$neonatal_comp_5 <- sapply(split_values, function(x) x[5])
+
+#Split Risk Factors
+data$risk_factors_1 <- NA
+data$risk_factors_2 <- NA
+data$risk_factors_3 <- NA
+data$risk_factors_4 <- NA
+data$risk_factors_5 <- NA
+
+split_values <- strsplit(as.character(data$risk_factors),";")
+data$risk_factors_1 <- sapply(split_values, function(x) x[1])
+data$risk_factors_2 <- sapply(split_values, function(x) x[2])
+data$risk_factors_3 <- sapply(split_values, function(x) x[3])
+data$risk_factors_4 <- sapply(split_values, function(x) x[4])
+data$risk_factors_5 <- sapply(split_values, function(x) x[5])
+
+
+#Split Diagnosis
+data$diagnosis_1 <- NA
+data$diagnosis_2 <- NA
+data$diagnosis_3 <- NA
+data$diagnosis_4 <- NA
+data$diagnosis_5 <- NA
+
+split_values <- strsplit(as.character(data$diagnosis),";")
+data$diagnosis_1 <- sapply(split_values, function(x) x[1])
+data$diagnosis_2 <- sapply(split_values, function(x) x[2])
+data$diagnosis_3 <- sapply(split_values, function(x) x[3])
+data$diagnosis_4 <- sapply(split_values, function(x) x[4])
+data$diagnosis_5 <- sapply(split_values, function(x) x[5])
+
+#Split Risk Pregnancy
+data$risk_pregancy_1<- NA
+data$risk_pregancy_2<- NA
+data$risk_pregancy_3<- NA
+data$risk_pregancy_4<- NA
+data$risk_pregancy_5 <- NA
+
+split_values <- strsplit(as.character(data$risk_pregancy),";")
+data$risk_pregancy_1 <- sapply(split_values, function(x) x[1])
+data$risk_pregancy_2 <- sapply(split_values, function(x) x[2])
+data$risk_pregancy_3 <- sapply(split_values, function(x) x[3])
+data$risk_pregancy_4 <- sapply(split_values, function(x) x[4])
+data$risk_pregancy_5 <- sapply(split_values, function(x) x[5])
+
+```
+
+Number of Weeks 36-41+ & % Age of Term Deliveries
+```{r Summary Stats, echo=TRUE}
+
+sum(data$ega == 36, na.rm=TRUE)
+sum(data$ega == 37, na.rm=TRUE)
+sum(data$ega == 38, na.rm=TRUE)
+sum(data$ega == 39, na.rm=TRUE)
+sum(data$ega == 40, na.rm=TRUE)
+sum(data$ega >= 41, na.rm=TRUE)
+
+```
+
+Number of C-Sections
+```{r}
+
+```
+
+
+## Plots
+
+
+```{r include=FALSE, echo=FALSE}
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
